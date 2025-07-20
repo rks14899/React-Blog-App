@@ -84,6 +84,10 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
+const cors = require("cors");
+app.use(cors());
+
+
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
