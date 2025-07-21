@@ -5,7 +5,7 @@ import { Context } from "../../context/Context";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://react-blog-backend-xzzn.onrender.com/images/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -26,7 +26,6 @@ export default function Topbar() {
               HOME
             </Link>
           </li>
-
           <li className="topListItem">
             <Link className="link" to="/">
               ABOUT
@@ -67,15 +66,13 @@ export default function Topbar() {
                 LOGIN
               </Link>
             </li>
-
-            <li>
+            <li className="topListItem">
               <Link className="link" to="/register">
                 REGISTER
               </Link>
             </li>
           </ul>
         )}
-
         <i className="topSearchIcon fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
