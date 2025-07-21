@@ -5,62 +5,56 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
 
-// import User from "../../../../api/models/User";
-
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2].trim();
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://react-blog-backend-xzzn.onrender.com/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
-  const getPost = async () => {
-    try {
-      const res = await axios.get("/posts/" + path.trim());
-      console.log("Fetched post:", res.data);
-
-      if (!res.data) {
-        console.error("Post not found for ID:", path);
-        return;
+    const getPost = async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts/${path}`);
+        if (!res.data) {
+          console.error("Post not found for ID:", path);
+          return;
+        }
+        setPost(res.data);
+        setTitle(res.data.title);
+        setDesc(res.data.desc);
+      } catch (err) {
+        console.error("Error fetching post:", err);
       }
-
-      setPost(res.data);
-      setTitle(res.data.title);
-      setDesc(res.data.desc);
-    } catch (err) {
-      console.error("Error fetching post:", err);
-    }
-  };
-  getPost();
-}, [path]);
-
+    };
+    getPost();
+  }, [path]);
 
   const handleDelete = async () => {
-  try {
-    await axios.delete(`/posts/${post._id}`, {
-      data: { username: user.username },
-    });
-    window.location.replace("/"); 
-  } catch (err) {
-    console.error("Error deleting post:", err);
-  }
-};
-
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
+        data: { username: user.username },
+      });
+      window.location.replace("/");
+    } catch (err) {
+      console.error("Error deleting post:", err);
+    }
+  };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`/posts/${post._id}`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
       });
-      // window.location.reload();
       setUpdateMode(false);
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error updating post:", err);
+    }
   };
 
   return (
