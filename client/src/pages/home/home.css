@@ -2,3 +2,19 @@
     display: flex;
     
 }
+
+@media only screen and (max-width: 768px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .posts {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
