@@ -9,7 +9,8 @@ export default function Sidebar() {
   useEffect(() => {
     const getCats = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/categories`);
+        const res = await axios.get(`https://react-blog-backend-xzzn.onrender.com/api/categories`);
+
         setCats(res.data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
