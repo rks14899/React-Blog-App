@@ -109,3 +109,47 @@
   margin-top: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+  .singlePostWrapper {
+    padding: 10px;
+  }
+
+  .singlePostTitle,
+  .singlePostTitleInput {
+    font-size: 22px;
+    margin: 5px;
+  }
+
+  .singlePostInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 14px;
+    padding: 0;
+    gap: 5px;
+  }
+
+  .singlePostDesc,
+  .singlePostDescInput {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .singlePostImage {
+    max-height: 250px;
+  }
+
+  .singlePostButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .singlePostEdit {
+    float: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+}
+
+
