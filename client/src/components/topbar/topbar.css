@@ -57,3 +57,43 @@
     cursor: pointer;
     margin-left: 15px;
 }
+
+@media only screen and (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .topLeft,
+  .topCenter,
+  .topRight {
+    flex: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+    flex-wrap: wrap;
+  }
+
+  .topList {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .topListItem {
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  .topIcon,
+  .topSearchIcon {
+    font-size: 20px;
+    margin: 5px;
+  }
+
+  .topImage {
+    width: 35px;
+    height: 35px;
+  }
+}
