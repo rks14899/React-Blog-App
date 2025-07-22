@@ -29,3 +29,20 @@
     margin-top: 80px;
     object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+  .headerTitleLg {
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0.5); /* Darker than aliceblue for mobile visibility */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: adds depth */
+  }
+
+  .headerTitleSm {
+    font-size: 16px;
+    top: 14%;
+  }
+
+  .headerImg {
+    height: 300px; /* Optional: reduce image height on smaller screens */
+  }
+}
