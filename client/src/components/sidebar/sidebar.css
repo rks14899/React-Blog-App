@@ -66,3 +66,38 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .home {
+    flex-direction: column;
+  }
+
+  .posts {
+    flex: none;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .sidebar {
+    flex: none;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+    border-radius: 0;
+  }
+
+  .sidebarListItem {
+    width: 100%; /* Stack category items on mobile */
+    text-align: center;
+  }
+
+  .sidebarSocial {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .sidebarIcon {
+    font-size: 20px;
+    margin: 10px;
+  }
+}
