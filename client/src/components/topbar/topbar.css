@@ -1,34 +1,36 @@
-.top{
+.top {
     width: 100%;
     height: 50px;
-    background-color: white;
+    background-color: #fff; /* white background */
     position: sticky;
-    top:0;
+    top: 0;
     display: flex;
     align-items: center;
     font-family: "Josefin Sans", sans-serif;
     z-index: 999;
+    border-bottom: 1px solid #ddd; /* added light border for visibility */
 }
 
-.topIcon{
+.topIcon {
     font-size: 20px;
     margin-right: 10px;
-    color: #444;
+    color: #333; /* slightly darker */
     cursor: pointer;
 }
 
-.topLeft,.topRight{
+.topLeft,
+.topRight {
     flex: 3;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.topCenter{
+.topCenter {
     flex: 6;
 }
 
-.topImage{
+.topImage {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -36,7 +38,7 @@
     cursor: pointer;
 }
 
-.topList{
+.topList {
     display: flex;
     justify-content: center;
     margin: 0;
@@ -44,57 +46,61 @@
     list-style: none;
 }
 
-.topListItem{
+.topListItem {
     margin-right: 20px;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 500; /* made bolder */
     cursor: pointer;
-    color: #111 !important; 
+    color: #000 !important; /* stronger contrast */
 }
 
-.topSearchIcon{
+.topSearchIcon {
     font-size: 18px;
-    color: #666;
+    color: #333; /* darker for contrast */
     cursor: pointer;
     margin-left: 15px;
 }
 
 @media only screen and (max-width: 768px) {
-  .top {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 0;
-  }
+    .top {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        background-color: #fafafa; /* subtle gray for mobile visibility */
+    }
 
-  .topLeft,
-  .topCenter,
-  .topRight {
-    flex: none;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 5px 0;
-    flex-wrap: wrap;
-  }
+    .topLeft,
+    .topCenter,
+    .topRight {
+        flex: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 5px 0;
+        flex-wrap: wrap;
+    }
 
-  .topList {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    .topList {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-  .topListItem {
-    margin: 10px;
-    font-size: 16px;
-  }
+    .topListItem {
+        margin: 10px;
+        font-size: 16px;
+        font-weight: 600; /* bolder on mobile */
+        color: #111 !important;
+    }
 
-  .topIcon,
-  .topSearchIcon {
-    font-size: 20px;
-    margin: 5px;
-  }
+    .topIcon,
+    .topSearchIcon {
+        font-size: 20px;
+        margin: 5px;
+        color: #222; /* more visible on light bg */
+    }
 
-  .topImage {
-    width: 35px;
-    height: 35px;
-  }
+    .topImage {
+        width: 35px;
+        height: 35px;
+    }
 }
