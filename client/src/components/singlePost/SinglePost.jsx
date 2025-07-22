@@ -18,7 +18,7 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts/${path}`);
+        const res = await axios.get(`https://react-blog-backend-xzzn.onrender.com/api/posts/${path}`);
         if (!res.data) {
           console.error("Post not found for ID:", path);
           return;
@@ -35,7 +35,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
+      await axios.delete(`https://react-blog-backend-xzzn.onrender.com/api/posts/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -46,7 +46,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/posts/${post._id}`, {
+      await axios.put(`https://react-blog-backend-xzzn.onrender.com/api/posts/${post._id}`, {
         username: user.username,
         title,
         desc,
