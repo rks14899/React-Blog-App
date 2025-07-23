@@ -39,7 +39,30 @@ export default function Write() {
         "https://react-blog-backend-xzzn.onrender.com/api/posts",
         newPost
       );
-      window.location.replace("/post/" + res.data._id);
+
+      const postId = res.data._id;
+
+      // Retry logic to wait until post is available
+      let tries = 0;
+      const checkPostAvailable = async () => {
+        try {
+          const checkRes = await axios.get(
+            `https://react-blog-backend-xzzn.onrender.com/api/posts/${postId}`
+          );
+          if (checkRes.status === 200) {
+            window.location.replace("/post/" + postId);
+          }
+        } catch (err) {
+          if (tries < 5) {
+            tries++;
+            setTimeout(checkPostAvailable, 500); // Retry after 500ms
+          } else {
+            alert("Post created, but not yet available. Try again shortly.");
+          }
+        }
+      };
+
+      checkPostAvailable();
     } catch (err) {
       console.error("Post creation failed:", err.response?.data || err.message);
     }
