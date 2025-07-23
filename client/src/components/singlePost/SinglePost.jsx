@@ -8,12 +8,13 @@ import { Context } from "../../context/Context";
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2].trim();
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState(null); // initially null
   const PF = "https://react-blog-backend-xzzn.onrender.com/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getPost = async () => {
@@ -28,6 +29,8 @@ export default function SinglePost() {
         setDesc(res.data.desc);
       } catch (err) {
         console.error("Error fetching post:", err);
+      } finally {
+        setLoading(false); // even if there's an error, stop loading
       }
     };
     getPost();
@@ -56,6 +59,14 @@ export default function SinglePost() {
       console.error("Error updating post:", err);
     }
   };
+
+  if (loading) {
+    return <div className="singlePost"><p>Loading post...</p></div>;
+  }
+
+  if (!post) {
+    return <div className="singlePost"><p>Post not found.</p></div>;
+  }
 
   return (
     <div className="singlePost">
